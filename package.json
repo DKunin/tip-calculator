@@ -1,0 +1,23 @@
+{
+  "name": "tip-calculator",
+  "version": "0.0.1",
+  "private": false,
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dkunin/tip-calculator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dkunin/tip-calculator/issues"
+  },
+  "scripts": {
+    "test": "echo test",
+    "start": "node ./",
+    "dev": "node ./",
+    "build": "NODE_ENV=production node ./"
+  },
+  "homepage": "https://github.com/dkunin/tip-calculator",
+  "keywords": [],
+  "license": "MIT",
+  "description": "> This is an example file with default selections."
+}
