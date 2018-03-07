@@ -15,17 +15,27 @@
         height: 100%;
 
     }
+    input[type='number'] {
+        border-radius: 15px;
+        padding: 5px;
+        font-size: 20px;
+        width: 100%;
+        outline: none;
+        border: 4px solid #2ecc71;
+        box-shadow: none; 
+    }
     input[type='range'] {
+        width: 100%;
         -webkit-appearance: none !important;
         background: #2ecc71;
-        height: 3px;
+        height: 4px;
         outline: none;
     }
     input[type='range']::-webkit-slider-thumb {
         -webkit-appearance: none !important;
         background: #27ae60;
-        height: 10px;
-        width: 10px;
+        height: 15px;
+        width: 15px;
         border-radius: 50%;
     }
     .tip-calculator {
@@ -61,18 +71,6 @@
 
     const totalOutputNode = document.querySelector('.total-output');
     const perPersonOutputNode = document.querySelector('.per-person-output');
-
-    // tipInputNode.addEventListener('input', () => {
-    //     const { value } = tipInputNode;
-    //     tipOutputNode.innerHTML = value;
-    //     tipAdditionalOutputNode.innerHTML = `${(billInputNode.value * (value / 100)).toFixed()} $`;
-    // });
-
-    // splitInputNode.addEventListener('input', () => {
-    //     const { value } = splitInputNode;
-    //     splitOutputNode.innerHTML = value;
-    //     splitAdditionalOutputNode.innerHTML = `${(100 / value).toFixed(0)} %`;
-    // });
 
     billInputNode.addEventListener('input', updateAllTheValues);
     tipInputNode.addEventListener('input', updateAllTheValues);
