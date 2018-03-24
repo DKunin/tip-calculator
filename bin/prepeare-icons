@@ -1,0 +1,12 @@
+#!/bin/bash
+
+sizes=( 48 96 144 196 384 )
+
+for i in "${sizes[@]}"
+do
+   ffmpeg -i ./original-icon.png -vf scale=$i:$i ./assets/icons/icon-$i.png
+done
+
+ffmpeg -i ./original-icon.png -vf scale=192:192 ./assets/icons/android-chrome-192x192.png
+ffmpeg -i ./original-icon.png -vf scale=512:512 ./assets/icons/android-chrome-512x512.png
+ffmpeg -i ./original-icon.png -vf scale=48:48 ./assets/icons/favicon.ico
