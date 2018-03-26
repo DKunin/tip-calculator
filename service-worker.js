@@ -32,6 +32,8 @@ self.oninstall = function(event) {
                     '[serviceWorker]: Intalled And Skip Waiting on Install'
                 );
                 return self.skipWaiting();
+            }).catch(function(error){
+                console.log(error);
             })
     );
 };
