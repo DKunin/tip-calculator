@@ -1,4 +1,3 @@
-// Name of the application
 const CACHE_NAME = 'tip-calculator';
 
 // Files to cache, skeleton of the app
