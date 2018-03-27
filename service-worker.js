@@ -31,7 +31,8 @@ self.oninstall = function(event) {
                     '[serviceWorker]: Intalled And Skip Waiting on Install'
                 );
                 return self.skipWaiting();
-            }).catch(function(error){
+            })
+            .catch(function(error) {
                 console.log(error);
             })
     );
@@ -41,7 +42,7 @@ self.oninstall = function(event) {
 self.onfetch = function(event) {
     console.log('[serviceWorker]: Fetching ' + event.request.url);
     // One url we should ignore, for example data
-    var raceUrl = 'API/';
+    const raceUrl = 'API/';
 
     // Make and cache the request
     if (event.request.url.indexOf(raceUrl) > -1) {
@@ -58,7 +59,7 @@ self.onfetch = function(event) {
             })
         );
     } else {
-        // Respond with 
+        // Respond with
         event.respondWith(
             caches.match(event.request).then(function(res) {
                 return res || fetch(event.request);
@@ -90,3 +91,47 @@ self.onactivate = function(event) {
             })
     );
 };
+
+self.addEventListener('push', function(e) {
+    const options = {
+        body: 'This notification was generated from a push!',
+        vibrate: [100, 50, 100],
+        data: {
+            dateOfArrival: Date.now(),
+            primaryKey: '2'
+        },
+        actions: [
+            {
+                action: 'explore',
+                title: 'Explore this new world'
+            },
+            {
+                action: 'close',
+                title: 'Close'
+            }
+        ]
+    };
+    e.waitUntil(self.registration.showNotification('Hello world!', options));
+});
+
+self.addEventListener('notificationclose', function(e) {
+    const notification = e.notification;
+    const primaryKey = notification.data.primaryKey;
+
+    console.log('Closed notification: ' + primaryKey);
+});
+
+self.addEventListener('notificationclick', function(e) {
+    var notification = e.notification;
+    var primaryKey = notification.data.primaryKey;
+    var action = e.action;
+
+    if (action === 'close') {
+        notification.close();
+    } else if (action === 'explore') {
+        clients.openWindow(
+            'https://developers.google.com/web/ilt/pwa/introduction-to-push-notifications'
+        );
+        notification.close();
+    }
+});
